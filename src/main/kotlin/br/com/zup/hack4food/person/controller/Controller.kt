@@ -1,4 +1,4 @@
-package br.com.zup.hack4food.pessoa.controller
+package br.com.zup.hack4food.person.controller
 
 import br.com.zup.hack4food.person.Person
 import br.com.zup.hack4food.person.Repository

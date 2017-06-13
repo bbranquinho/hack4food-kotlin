@@ -2,8 +2,8 @@ package br.com.zup.hack4food
 
 import br.com.zup.hack4food.person.Money
 import br.com.zup.hack4food.person.Person
-import br.com.zup.hack4food.pessoa.controller.jsonToObject
-import br.com.zup.hack4food.pessoa.controller.objectToJson
+import br.com.zup.hack4food.person.controller.jsonToObject
+import br.com.zup.hack4food.person.controller.objectToJson
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
