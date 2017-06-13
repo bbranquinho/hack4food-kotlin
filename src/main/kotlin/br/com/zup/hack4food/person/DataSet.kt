@@ -7,7 +7,7 @@ object DataSet {
 
     private val id = AtomicInteger(1)
 
-    val DADOS: MutableSet<Person> = mutableSetOf(
+    val data: MutableSet<Person> = mutableSetOf(
             Person(id = newId(), name = "Person 1", money = Money(amount = BigDecimal("1273.28"), currency = "R$")),
             Person(id = newId(), name = "Person 2", money = Money(amount = BigDecimal("2012.75"), currency = "$"))
     )

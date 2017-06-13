@@ -1,7 +1,6 @@
 package br.com.zup.hack4food.person.controller
 
 import br.com.zup.hack4food.person.Person
-import br.com.zup.hack4food.person.PersonRepresentation
 import br.com.zup.hack4food.person.Repository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -19,28 +18,34 @@ class Controller @Autowired constructor(val repository: Repository) {
     fun findAll() =
             ResponseEntity(repository.findAll().toRepresentation(), HttpStatus.OK)
 
+//    @GetMapping("/{id}")
+//    fun findById(@PathVariable("id") id: Int): ResponseEntity<PersonRepresentation> {
+////        val person = repository.findOne(id)
+//
+////        return if (person?.toRepresentation() != null)
+////            ResponseEntity(person.toRepresentation(), HttpStatus.OK)
+////        else
+////            ResponseEntity(HttpStatus.NOT_FOUND)
+//
+////        return person?.let {
+////            println(person)
+////            return ResponseEntity(person.toRepresentation(), HttpStatus.OK)
+////        } ?: ResponseEntity(HttpStatus.NOT_FOUND)
+//
+////        return person?.let {
+////            ResponseEntity(person.toRepresentation(), HttpStatus.OK)
+////        } ?: ResponseEntity(HttpStatus.NOT_FOUND)
+//
+//        return Optional.ofNullable(repository.findOne(id))
+//                .map { ResponseEntity<PersonRepresentation>(it.toRepresentation(), HttpStatus.OK) }
+//                .orElse(ResponseEntity<PersonRepresentation>(HttpStatus.NOT_FOUND))
+//    }
+
     @GetMapping("/{id}")
-    fun findById(@PathVariable("id") id: Int): ResponseEntity<PersonRepresentation> {
-//        val person = repository.findOne(id)
-
-//        return if (person?.toRepresentation() != null)
-//            ResponseEntity(person.toRepresentation(), HttpStatus.OK)
-//        else
-//            ResponseEntity(HttpStatus.NOT_FOUND)
-
-//        return person?.let {
-//            println(person)
-//            return ResponseEntity(person.toRepresentation(), HttpStatus.OK)
-//        } ?: ResponseEntity(HttpStatus.NOT_FOUND)
-
-//        return person?.let {
-//            ResponseEntity(person.toRepresentation(), HttpStatus.OK)
-//        } ?: ResponseEntity(HttpStatus.NOT_FOUND)
-
-        return Optional.ofNullable(repository.findOne(id))
-                .map { ResponseEntity<PersonRepresentation>(it.toRepresentation(), HttpStatus.OK) }
-                .orElse(ResponseEntity<PersonRepresentation>(HttpStatus.NOT_FOUND))
-    }
+    fun findById(@PathVariable("id") id: Int) =
+            Optional.ofNullable(repository.findOne(id))
+                    .map { ResponseEntity(it.toRepresentation(), HttpStatus.OK) }
+                    .orElse(ResponseEntity(HttpStatus.NOT_FOUND))
 
     @GetMapping("/percentage/{id}")
     fun percentage(@PathVariable("id") id: Int) =

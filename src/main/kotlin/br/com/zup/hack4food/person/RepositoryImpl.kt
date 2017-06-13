@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component
 class RepositoryImpl : Repository {
 
     override fun findAll() =
-        DataSet.DADOS.toList()
+        DataSet.data.toList()
 
     override fun add(person: Person): Person {
         val newPerson = person.copy(id = DataSet.newId())
-        DataSet.DADOS.add(newPerson)
+        DataSet.data.add(newPerson)
         return newPerson
     }
 
     override fun findOne(id: Int) =
-        DataSet.DADOS.filter { it.id == id }.firstOrNull()
+        DataSet.data.filter { it.id == id }.firstOrNull()
 
 }

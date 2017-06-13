@@ -30,7 +30,35 @@ class Hack4FoodTest {
     }
 
     @Test
-    fun augustoBranquinho() {
+    fun whenList() {
+        val x = readLine()!!.toInt()
+        val validNumbers = arrayListOf(11, 15, 20)
+
+        when (x) {
+            in 1..10 -> print("x is in the range")
+            in validNumbers -> print("x is valid")
+            !in 10..20 -> print("x is outside the range")
+            else -> print("none of the above")
+        }
+    }
+
+    @Test
+    fun cast() {
+        val people: IPerson = Augusto()
+
+        if (people is Branquinho) {
+            people.methodBranquinho()
+        }
+
+        when (people) {
+            is Augusto -> people.methodAugusto()
+            is Branquinho -> people.methodBranquinho()
+            else -> throw IllegalArgumentException()
+        }
+    }
+
+    @Test
+    fun compare() {
         val augusto = Person(id = 1, name =  "Augusto", money = Money(amount = BigDecimal(1000), currency = "R$"))
         val branquinho = Person(id = 1, name =  "Augusto", money = Money(amount = BigDecimal(1000), currency = "R$"))
 
@@ -51,6 +79,11 @@ class Hack4FoodTest {
         } else {
             println("Houston, we have a problem!")
         }
+    }
+
+    @Test
+    fun concat() {
+        val augusto = Person(id = 1, name =  "Augusto", money = Money(amount = BigDecimal(1000), currency = "R$"))
 
         println("Person[id=" + augusto.id + ", name='" + augusto.name + "', money=" + augusto.money.currency + " " + augusto.money.amount + "]")
 
@@ -67,9 +100,21 @@ class Hack4FoodTest {
     id=${augusto.id},
     name='${augusto.name}',
     money=${augusto.money.currency} ${augusto.money.amount}
-]"""
-        )
-
+]""")
     }
 
+}
+
+interface IPerson
+
+class Branquinho: IPerson {
+    fun methodBranquinho() {
+        println("Branquinho")
+    }
+}
+
+class Augusto: IPerson {
+    fun methodAugusto() {
+        println("Augusto")
+    }
 }

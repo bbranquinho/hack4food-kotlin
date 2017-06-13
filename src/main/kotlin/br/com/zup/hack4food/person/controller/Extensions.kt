@@ -2,6 +2,7 @@ package br.com.zup.hack4food.person.controller
 
 import br.com.zup.hack4food.person.Money
 import br.com.zup.hack4food.person.Person
+import br.com.zup.hack4food.person.PersonRepresentation
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import java.math.BigDecimal
