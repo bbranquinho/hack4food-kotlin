@@ -1,5 +1,6 @@
 package br.com.zup.hack4food
 
+import br.com.zup.hack4food.person.DataSet
 import br.com.zup.hack4food.person.Money
 import br.com.zup.hack4food.person.Person
 import br.com.zup.hack4food.person.controller.jsonToObject
@@ -101,6 +102,15 @@ class Hack4FoodTest {
     name='${augusto.name}',
     money=${augusto.money.currency} ${augusto.money.amount}
 ]""")
+    }
+
+    @Test
+    fun listPair() {
+        val map: List<Pair<Int?, Person>> = DataSet.data.map { it.id to it }
+
+        val (id, person) = map.first()
+
+        println("${id} ${person}")
     }
 
 }
